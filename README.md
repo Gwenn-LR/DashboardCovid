@@ -36,5 +36,11 @@ Evaluation par le formateur.
 
 Le livrable est un lien vers un dépôt GitHub qui contient, OBLIGATOIREMENT : 
 - [ ] une capture d'écran du dashborad GRAFANA,
-- [ ] le docker compose de la stack,
+- [ ] le docker-compose de la stack,
 - [ ] un README très détaillé du travail fait pour obtenir le dashboard (en Markdown).
+
+# Travail à réaliser
+ - [ ] Dockerfile
+ - [ ] Docker-compose
+ - [ ] Création de la bdd
+ - [ ] Configuration de Grafanar
