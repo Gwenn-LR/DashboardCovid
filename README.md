@@ -40,7 +40,7 @@ Le livrable est un lien vers un dépôt GitHub qui contient, OBLIGATOIREMENT :
 - [ ] un README très détaillé du travail fait pour obtenir le dashboard (en Markdown).
 
 # Travail à réaliser
- - [ ] Dockerfile
- - [ ] Docker-compose
- - [ ] Création de la bdd
+ - [x] Dockerfile
+ - [x] Docker-compose
+ - [x] Création de la bdd
  - [ ] Configuration de Grafanar

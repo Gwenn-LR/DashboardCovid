@@ -1,0 +1,36 @@
+{
+	"name": "Develop Python",
+	"dockerComposeFile": "docker-compose.yml",
+	"shutdownAction": "stopCompose",
+	"service": "dev",
+	"workspaceFolder": "/app",
+
+	"settings": { 
+		"terminal.integrated.profiles.linux":{
+			"bash": {
+				"path": "bash",
+				"icon": "terminal-bash"
+			},
+			"zsh": {
+				"path": "zsh"
+			},
+			"fish": {
+				"path": "fish"
+			},
+			"tmux": {
+				"path": "tmux",
+				"icon": "terminal-tmux"
+			},
+			"pwsh": {
+				"path": "pwsh",
+				"icon": "terminal-powershell"
+			}
+		},
+		"terminal.integrated.defaultProfile.linux":"bash (2)",
+		"python.pythonPath": "/usr/local/bin/python"
+	},
+	
+	"extensions": [
+		"ms-python.python"
+	]
+}
