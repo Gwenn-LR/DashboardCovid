@@ -30,6 +30,8 @@ services:
   image: grafana/grafana-oss:8.2.0
   ports:
    - 3000:3000
+  volumes:
+   - grafana-storage:/var/lib/grafana
   networks:
    - dashboard_network
 
@@ -44,6 +46,7 @@ services:
 volumes:
  mysql:
  mysql_config:
+ grafana-storage:
 
 networks:
   dashboard_network:
