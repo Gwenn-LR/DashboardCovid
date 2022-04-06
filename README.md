@@ -35,12 +35,68 @@ Evaluation par le formateur.
 # Livrables
 
 Le livrable est un lien vers un dépôt GitHub qui contient, OBLIGATOIREMENT : 
-- [ ] une capture d'écran du dashborad GRAFANA,
-- [ ] le docker-compose de la stack,
-- [ ] un README très détaillé du travail fait pour obtenir le dashboard (en Markdown).
+- [x] une capture d'écran du dashborad GRAFANA,
+- [x] le docker-compose de la stack,
+- [x] un README très détaillé du travail fait pour obtenir le dashboard (en Markdown).
 
 # Travail à réaliser
  - [x] Dockerfile
  - [x] Docker-compose
  - [x] Création de la bdd
- - [ ] Configuration de Grafanar
+ - [x] Configuration de Grafanar
+
+# Réalisation du dashboard
+## Paramétrage
+- Absolute time range : 2020-12-12 00:00:00 - 2021-02-24 23:59:59
+
+## Graphiques à réaliser
+ - [x] Evolution du nombre quotidien de vaccinations par pays
+ - [x] Moyenne quotidienne des vaccinations par pays
+ - [x] Total des personnes complétement vaccinées par pays
+
+## Evolution du nombre quotidien de vaccinations par pays
+### Code SQL : 
+```mysql
+SELECT
+    date AS "time",
+    country AS metric,
+    daily_vaccinations AS "daily_vaccinations"
+FROM country_vaccinations
+WHERE $__timeFilter(date) and daily_vaccinations>"100000"
+ORDER BY date
+```
+
+## Moyenne quotidienne des vaccinations par pays
+### Code SQL : 
+```mysql
+SELECT
+    AVG(daily_vaccinations) as "sum_vaccinated", country 
+FROM country_vaccinations
+GROUP BY country
+HAVING sum_vaccinated
+```
+
+### Options :
+- Data layers :
+    - Lookup field : "country"
+    - Marker Color : "sum_vaccinated"
+    - Marker Size : "sum_vaccinated"
+- Standard options :
+    - Color scheme : "Red-Yellow-Green"
+
+## Total des personnes complétement vaccinées par pays
+### Code SQL : 
+```mysql
+SELECT
+  country, sum(people_fully_vaccinated) as "sum_vaccinationed"
+FROM country_vaccinations
+GROUP BY country
+ORDER BY sum_vaccinationed DESC
+LIMIT 20;
+```
+
+### Options :
+- Bar chart :
+    - Gradient mode : "Scheme"
+- Standard options :
+    - Color scheme : "Red-Yellow-Green"
